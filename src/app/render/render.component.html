@@ -1,0 +1,20 @@
+<h1>Componente Render</h1>
+
+<button (click)="trocar()">{{status}}</button>
+
+<div *ngIf="show">
+    eu estou visivel porque fui autorizado
+</div>
+
+<ng-template [ngIf]="show">
+    <div>
+        eu estou visivel porque fui autorizado
+    </div>
+</ng-template>
+
+<!--@if(show){<p>Visível!</p> }
+@else{<p>Invisível!</p> }-->
+ <button>
+    @if(show){ Esconder }
+    @else{Mostrar }
+</button>
