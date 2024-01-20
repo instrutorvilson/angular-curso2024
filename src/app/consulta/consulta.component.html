@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="text-center">Consulta de Contatos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ct of contatos">
+                <td>{{ct.id}} </td>
+                <td>{{ct.firstName}} </td>
+                <td>{{ct.lastName}} </td>
+                <td>{{ct.email}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
