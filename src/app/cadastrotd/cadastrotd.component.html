@@ -1,0 +1,13 @@
+<p>Novo Contato</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <label for="firstName">Informe nome</label>
+    <input id="firstName" type="text" ngModel name="firstName"/>
+
+    <label for="lasttName">Informe sobrenome</label>
+    <input id="lasttName" type="text" ngModel name="lastName"/>
+
+    <label for="email">Informe email</label>
+    <input id="email" type="text" ngModel name="email"/>
+
+    <button>Salvar</button>
+</form>
