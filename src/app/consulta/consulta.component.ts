@@ -16,7 +16,15 @@ export class ConsultaComponent implements OnInit {
   constructor(private service: CadserviceService){}
 
   ngOnInit(): void {
-     this.service.consultar()
+     this.consultar()
+  }
+
+  excluir(id:any){
+     this.service.excluir(id).subscribe(s => this.consultar())
+  }
+
+  consultar(){
+    this.service.consultar()
      .subscribe(data => {  this.contatos = data   })
   }
 }
