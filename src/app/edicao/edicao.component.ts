@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IContato } from '../../interfaces/Icontato';
 import { ContatoService } from '../contato.service';
 
@@ -13,17 +13,17 @@ import { ContatoService } from '../contato.service';
 })
 export class EdicaoComponent implements OnInit {
   contato: IContato = { firstName: '', lastName: '', email:''}
-
+ 
   contatoForm = new FormGroup(
     {
-      id: new FormControl(this.contato.id), 
+      id: new FormControl(this.contato.id) || 0, 
       firstName: new FormControl(''),   
       lastName: new FormControl('') ,
       email: new FormControl('')
     }
   )
 
-  constructor(private route: ActivatedRoute, private service: ContatoService){}
+  constructor(private router: Router, private route: ActivatedRoute, private service: ContatoService){}
  
   ngOnInit(): void {
     let params = this.route.snapshot.params
@@ -42,7 +42,26 @@ export class EdicaoComponent implements OnInit {
     )
   }
 
-  onSubmit(){
-
-  }
+  onSubmit(){   
+    //verifica se contato ja foi cadastrado
+     this.service.consultar().subscribe(data => {
+       let dados =  data.filter(element => element.email == this.contatoForm.value.email )
+            
+       if(dados.length > 0){
+        alert("email já inserido")
+        return
+      }
+ 
+       let obj: IContato = {
+         id: this.contatoForm.value.id || 0,
+         firstName: this.contatoForm.value.firstName!,
+         lastName: this.contatoForm.value.lastName!,
+         email: this.contatoForm.value.email!,
+      }
+        this.service.alterar(obj).subscribe( data => {
+           this.router.navigate(['/consulta'])
+        })     
+    })  
+  }   
+    
 }

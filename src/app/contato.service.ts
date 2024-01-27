@@ -25,4 +25,8 @@ export class ContatoService {
   excluir(id:number):Observable<string>{
    return this.http.delete<string>(`http://localhost:3000/contatos/${id}`)
   }
+
+  alterar(contato:IContato): Observable<IContato>{
+    return this.http.put<IContato>(`http://localhost:3000/contatos/${contato.id}`,contato)
+  }
 }
