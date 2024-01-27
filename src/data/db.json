@@ -1,0 +1,17 @@
+{
+  "contatos": [
+    {
+      "id": "1e9f",
+      "firstName": "maria",
+      "lastName": "das dores",
+      "email": "maria@gmail.com"
+    },    
+    
+    {
+      "id": "6776",
+      "firstName": "jose",
+      "lastName": "das pedras",
+      "email": "jose@gmail.com"
+    }
+  ]
+}
