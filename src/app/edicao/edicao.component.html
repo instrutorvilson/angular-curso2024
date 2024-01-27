@@ -1,5 +1,27 @@
-<p>edicao works!</p>
-{{ contato.id }}
-{{ contato.firstName}}
-{{ contato.lastName }}
-{{ contato.email }}
+<div class="container">
+    <p class="mt-5 text-center">Editando Contato</p>
+    <form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label class="form-label" for="id">Id Contato</label>
+            <input class="form-control" id="id" type="text" formControlName="id" />
+        </div>
+
+        <div>
+            <label class="form-label" for="firstName">Informe nome</label>
+            <input class="form-control" id="firstName" type="text" formControlName="firstName" />
+        </div>
+
+        <div>
+            <label class="form-label" for="lastName">Informe sobrenome</label>
+            <input class="form-control" id="lastName" type="text" formControlName="lastName" />
+        </div>
+        <div>
+            <label class="form-label" for="email">Informe email</label>
+            <input class="form-control" id="email" type="text" formControlName="email" />
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-primary">Salvar</button>
+        </div>        
+    </form>
+</div>
