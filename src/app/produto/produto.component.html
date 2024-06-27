@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="meuForm" (ngSubmit)="recebeDados()">
+        <label>Informe descrição</label>
+        <input 
+           type="text"  
+           formControlName="descricao"
+           class="form-control"
+        />
+        <label>Informe preço</label>
+        <input 
+           type="text"  
+           formControlName="preco"
+           class="form-control"
+        />
+        <button class="btn btn-primary" >Gravar</button>
+    </form>
+   
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of produtos">
+                <td>{{p.descricao}}</td>
+                <td>{{p.preco}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
