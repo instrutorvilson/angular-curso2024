@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FakeprodutoService } from '../fakeproduto.service';
 import { NgFor } from '@angular/common'
+import { TProduto } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-listarprodutofake',
@@ -11,7 +12,7 @@ import { NgFor } from '@angular/common'
   
 })
 export class ListarprodutofakeComponent {
-  produtos: any[] = [{id:1, title:'milho',price:10}]
+  produtos: TProduto[] = []
 
   constructor(private fakeProduto: FakeprodutoService){
      this.carregarProdutos()
@@ -19,5 +20,9 @@ export class ListarprodutofakeComponent {
 
   carregarProdutos(){
     this.fakeProduto.getProdutos().subscribe(dados => this.produtos = dados)      
+  }
+
+  criar(){
+    this.fakeProduto.saveProduto().subscribe(dados => {})
   }
 }
