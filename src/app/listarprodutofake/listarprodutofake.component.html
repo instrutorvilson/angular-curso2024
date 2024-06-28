@@ -8,8 +8,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr></tr>
+            <tr *ngFor="let p of produtos">
+                <td>{{ p.id }}</td>
+                <td>{{ p.title }}</td>
+                <td>{{ p.price }}</td>
+            </tr>
         </tbody>
     </table>
-    <button (click)="carregarProdutos()">carregar</button>
+    
 </div>
