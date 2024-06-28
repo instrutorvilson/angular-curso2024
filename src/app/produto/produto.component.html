@@ -1,3 +1,45 @@
+<div class="container mb-5">
+   <h2>Novo produto</h2>
+   <form #f="ngForm" (ngSubmit)="gerarDados()">
+       <label>Informe descrição</label>
+       <input 
+           class="form-control" 
+           type="text" 
+           name="descricao" 
+           [(ngModel)]="descricao"
+           required
+        />
+        <div *ngIf="f.submitted && !descricao">
+            O nome é obrigatório
+        </div>
+
+       <label>Informe preço</label>
+       <input 
+           class="form-control" 
+           type="text" 
+           name="preco" 
+           [(ngModel)]="preco"
+           required
+        />
+        <div *ngIf="f.submitted && !preco">
+            O preço é obrigatório
+        </div>
+
+        <label>Informe estoque</label>
+       <input 
+           class="form-control" 
+           type="text" 
+           name="estoque" 
+           [(ngModel)]="estoque"
+           required
+        />
+        <div *ngIf="f.submitted && !estoque">
+            O estoque é obrigatório
+        </div>
+        <button class="btn btn-primary">Gravar</button>
+   </form>
+</div>
+
 <div class="container">
     <h2>Lista de produto</h2>
     <table class="table">
