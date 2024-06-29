@@ -1,7 +1,17 @@
 <div class="container mb-5">
    <h2>Novo produto</h2>
    <form #f="ngForm" (ngSubmit)="gerarDados()">
-       <label>Informe descrição</label>
+     <div *ngIf="id != 0">
+       <label>ID</label>
+       <input 
+           class="form-control" 
+           type="text" 
+           name="id" 
+           [ngModel]="id"
+           readonly
+        />
+     </div>  
+     <label>Informe descrição</label>
        <input 
            class="form-control" 
            type="text" 
@@ -36,7 +46,7 @@
         <div *ngIf="f.submitted && !estoque">
             O estoque é obrigatório
         </div>
-        <button class="btn btn-primary">Gravar</button>
+        <button [disabled]="!f.valid" class="btn btn-primary">Gravar</button>
    </form>
 </div>
 
@@ -54,7 +64,11 @@
             <tr *ngFor="let p of produtos">
                 <td>{{ p.id }}</td>
                 <td>{{ p.descricao }}</td>
-                <td><a [routerLink]="['/detalhe',p.id]">Detail</a></td>
+                <td>
+                    <a [routerLink]="['/detalhe',p.id]">Detail</a>
+                    <a class="m-3" (click)='excluir(p.id)'>Excluir</a>
+                    <a class="m-3" (click)='editar(p.id)'>Editar</a>
+                </td>
             </tr>
         </tbody>        
     </table>

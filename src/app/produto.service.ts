@@ -23,6 +23,14 @@ export class ProdutoService {
 
   salvar(produto: TProduto) {
     produto.id = this.produtos.length + 1;
-    this.produtos.push(produto)
+    this.produtos.push(produto)   
   }
+
+  excluir(idProduto:number){
+    this.produtos = this.produtos.filter(prod => prod.id != idProduto)
+  }
+
+  
+
+  
 }

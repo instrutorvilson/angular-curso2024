@@ -1,7 +1,7 @@
 interface TProduto {
     id?: Number
     descricao: string,
-    preco?: Number,
+    preco?: Number ,
     estoque?: Number
 }
 
