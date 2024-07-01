@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="text-center">Login</h1>
+    <form #f="ngForm">
+        <label>Informe email</label>
+        <input 
+           class="form-control mb-2"
+           type="email" 
+           placeholder="Informe email"
+           name="email"
+           ngModel
+        />
+        <label>Informe senha</label>
+        <input 
+           class="form-control"
+           type="password" 
+           placeholder="Informe senha"
+           name="senha"
+           ngModel
+        />
+        <div class="mt-3 d-flex justify-content-between">
+            <button (click)="login(f.value)" class="btn btn-outline-primary">Logar</button>
+            <button (click)="logout()" class="btn btn-danger">Logout</button>
+        </div>
+        <div>
+            {{msg}}
+        </div>
+        
+    </form>
+</div>
