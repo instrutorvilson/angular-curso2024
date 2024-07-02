@@ -10,22 +10,26 @@ import { Tusuario } from "./interfaces";
   providedIn: 'root'
 })
 export class AuthLogado implements CanActivate{
+ 
   private user: Tusuario = {email:'', senha: '', perfil: ''}
+
   constructor(private router: Router){}
   eAutorizado: boolean = false
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+  canActivate(route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     this.user = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem('user'))))
    
    if(!this.user){
     this.router.navigate(['/login'])    
    }
-   console.log(this.user.perfil)
 
-   if(this.user.perfil == 'gerente' 
+    this.eAutorizado = false
+    if(this.user.perfil == 'gerente' 
         && route.routeConfig?.path == 'cadastro'){
           this.eAutorizado = true
     }
+    
     
     if(this.user.perfil == 'operador' 
         && route.routeConfig?.path == 'consulta'){
