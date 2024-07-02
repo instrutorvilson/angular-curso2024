@@ -14,7 +14,10 @@ export const routes: Routes = [
         path:'cadastro', 
         component: CadastroComponent, 
         canActivate: [AuthLogado] },
-    { path: 'consulta', component: ConsultaComponent},
+    { path: 'consulta', 
+            component: ConsultaComponent,
+            canActivate: [AuthLogado]
+        },
     { path: 'login', component: LoginComponent },
     { path: 'about', component: AboutComponent },
     { path: '**', component: PageErrorComponent }
